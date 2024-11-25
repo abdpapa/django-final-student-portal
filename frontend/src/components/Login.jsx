@@ -3,10 +3,14 @@ import { useState } from 'react';
 //import axiosInstance from './axios';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useStor } from '../data/storeuser';
+//import { useStore } from 'zustand';
+//import { useStor } from '../data/storeuser';
 function LoginComponent() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const {current_user,is_student,setuser,setUserStatus}=useStor()
 
 
 //CODE FOR ACCESING ENDPOINTS WITH TOKEN
@@ -22,14 +26,21 @@ function LoginComponent() {
         try{
             const response = await axios.post('http://localhost:8000/auth/studentlogin/', {
                 username,
-                password,
-              });
-              const { access_token, refresh_token } = response.data;
+                password},
+                {withCredentials: true}
+                
+              );
+              const {usernames,is_student} = response.data;
 
-              console.log('Access Token:', access_token);
-              console.log('Refresh Token:', refresh_token);
-              localStorage.setItem('access_token', access_token);
-              localStorage.setItem('refresh_token', refresh_token);
+              localStorage.setItem('user', usernames);
+              localStorage.setItem('is_student', is_student);
+
+            //   console.log('Access Token:', access_token);
+            //   console.log('Refresh Token:', refresh_token);
+            //   localStorage.setItem('access_token', access_token);
+            //   localStorage.setItem('refresh_token', refresh_token);
+          
+           // console.log(usernames)
             if (response.data.status==="success"){
                 navigate('/home');
             }

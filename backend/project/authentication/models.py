@@ -16,6 +16,7 @@ class Student(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=128)
     is_student = models.BooleanField(default=True)  # Identifying if the user is a student
+    courses = models.JSONField(default=list, blank=True)
 
     def __str__(self):
         return self.username
@@ -25,16 +26,25 @@ class Teacher(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=128)
     is_student = models.BooleanField(default=False)  # Identifying if the user is a student
+    courses = models.JSONField(default=list, blank=True)
+
+
 
     def __str__(self):
         return self.username
+
+
+
+
 
 
 class TeacherRequest(models.Model):
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=255)  # Store hashed password
+    courses = models.JSONField(default=list, blank=True)
     is_approved = models.BooleanField(default=False)
+
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

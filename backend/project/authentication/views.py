@@ -2,7 +2,7 @@
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import authenticate, login  
+from django.contrib.auth import authenticate, login,logout  
 from authentication.models import Student,Teacher,TeacherRequest
 from django.contrib.auth.hashers import make_password
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -12,6 +12,9 @@ from .models import User
 def loginStudent(request):
     
     if request.method == 'POST':
+        if request.user.is_authenticated:
+            print("User is already logged in.")
+            logout(request)
         try:
             data = json.loads(request.body)
             
@@ -36,6 +39,8 @@ def loginStudent(request):
 
                  return JsonResponse({
                         'status': 'success',
+                        'usernames' :user.username,
+                        'is_student':user.is_student,
                         'access_token': access_token,
                         'refresh_token': str(refresh),
                         'message': 'Login successful'
@@ -108,8 +113,11 @@ def registerStudent(request):
 #Teacher registeration and login
 @csrf_exempt
 def loginTeacher(request):
-    
+    #print(request.user.username)
     if request.method == 'POST':
+        if request.user.is_authenticated:
+            print("User is already logged in.")
+            logout(request)
         try:
             data = json.loads(request.body)
            
@@ -120,16 +128,21 @@ def loginTeacher(request):
                 # return JsonResponse({'status': 'error', 'message': 'Username is required'}, status=200)
                 password = data.get('password')
                 user = authenticate(username=username, password=password)
-                #print(user)
+                
            
-
+            
             if user:
                 if  user.is_student == False:
-                 print("g")
+                 
                  login(request, user)
-                 print("logged in")
+                 
+
+                #  user_data = {
+                # 'username': user.username,
+                #  }
                 
-                 return JsonResponse({'status': 'success'}, status=200)
+                 return JsonResponse({'status': 'success','usernames' :user.username,
+                        'is_student':user.is_student}, status=200)
             else:
                 print('not a teacher')
                 return JsonResponse({'status': 'error', 'message': 'Invalid credentials'}, status=400)
@@ -155,11 +168,13 @@ def registerTeacher(request):
             username = data.get('username')
             password = data.get('password')
             email = data.get('email')
+            courses = data.get('courses')
+            
             
             # Validate required fields
             if not username or not password or not email:
                 return JsonResponse({'status': 'error', 'message': 'All fields are required'}, status=400)
-            
+           
             if TeacherRequest.objects.filter(username=username).exists() or User.objects.filter(username=username).exists():
                 return JsonResponse({'status': 'error', 'message': 'Username already exists'}, status=400)
             if TeacherRequest.objects.filter(email=email).exists() or User.objects.filter(email=email).exists():
@@ -169,7 +184,8 @@ def registerTeacher(request):
             TeacherRequest.objects.create(
                 username=username,
                 email=email,
-                password=password  # Hash the password before saving
+                password=password,
+                courses=courses  # Hash the password before saving
             )
             
             return JsonResponse({'status': 'success', 'message': 'Teacher registration request submitted successfully'}, status=201)

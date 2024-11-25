@@ -1,0 +1,64 @@
+.studentbackground {
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(193, 193, 193);
+    display: flex;
+    flex-direction: column;
+}
+
+.featuredcoursearea, .yourcoursearea {
+    margin: 10vh 15%;
+    height: 44vh;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    font-size: 24px;
+}
+
+.featuredcoursetext {
+    margin: 0;
+    padding-bottom: 3vh;
+    display: flex;
+    justify-content: center;
+}
+
+.askforhelp {
+    font-weight: 400;
+    background-color: rgb(55, 13, 69);
+    color: white;
+    padding: 1vh;
+    border-radius: 10px;
+    margin: auto 15%;
+    width: fit-content;
+}
+
+.coursebox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    border: 2px solid rgb(55, 13, 69);
+    border-radius: 8px;
+    background-color: rgb(230, 230, 230);
+    font-size: 20px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.feature-my-course-button {
+    background-color: purple;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 40px;
+    border-radius: 12px;
+}
+.feature-my-course-button:hover {
+    background-color:rgb(65, 0, 91);
+}

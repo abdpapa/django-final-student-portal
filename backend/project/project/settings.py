@@ -40,10 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'authentication',
+    'testapp',
     'corsheaders',
+    'enrollment',
 ]
 # settings.py
 AUTH_USER_MODEL = 'authentication.User'
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Default database session
+SESSION_COOKIE_NAME = 'sessionid'  # Default cookie name
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -69,7 +73,7 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
-
+CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'project.urls'
 
 TEMPLATES = [
@@ -100,7 +104,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

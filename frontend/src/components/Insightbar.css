@@ -1,0 +1,76 @@
+
+
+/* Main container for the insight bar */
+.insightbar {
+    background-color: white;
+    border-radius: 5px;
+    margin: 5vh 15%; /* Combines margin-left/right/top/bottom */
+    height: auto; /* Allow height to adapt to content */
+    padding: 2vh; /* Add padding for better spacing */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for aesthetics */
+}
+
+/* Center text inside the insight bar */
+.insighttext {
+    display: flex;
+    margin-top: 0;
+    justify-content: center;
+    font-size: 1.2rem; /* Scalable font size */
+}
+
+/* Styles for individual boxes */
+.successrate, .overallperformance {
+    background-color: rgb(225, 225, 225);
+    height: 18vh;
+    width: 25vh;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+    margin: 1rem; /* Consistent margin for spacing */
+
+}
+
+
+/* Flex container for insight boxes */
+.insightboxes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 1rem; /* Spacing between boxes */
+}
+
+/* Add responsiveness using media queries */
+@media (max-width: 768px) { /* Tablet screens */
+    .insightbar {
+        margin: 5vh 5%; /* Reduce side margins */
+    }
+
+    .successrate, .overallperformance {
+        height: 15vh;
+        width: 20vh; /* Slightly smaller boxes */
+        font-size: small; /* Adjust font size */
+    }
+}
+
+@media (max-width: 480px) { /* Mobile screens */
+    .insightbar {
+        margin: 2vh 2%; /* Narrower margins */
+        padding: 1vh;
+    }
+
+    .insightboxes {
+        flex-direction: column; /* Stack boxes vertically */
+        gap: 0.5rem; /* Reduce gap between boxes */
+    }
+
+    .successrate, .overallperformance {
+        width: 80%; /* Full-width boxes */
+        height: auto; /* Allow height to adjust */
+    }
+}
