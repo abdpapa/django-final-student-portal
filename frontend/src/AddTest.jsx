@@ -1,5 +1,8 @@
+//THE PAGE WHERE TEACHER ADDS TEST
+
+
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Quiz from 'react-quiz-component';
 import axios from 'axios';
 const AddTest = () => {
@@ -8,32 +11,35 @@ const AddTest = () => {
     const course = queryParams.get('course');
     const subject = queryParams.get('subject');
     const chapter = queryParams.get('chapter');
+    const navigate=useNavigate()
     
-    useEffect(() => {
-        // Define an async function to fetch data
-        const fetchQuizzes = async () => {
-          try {
-            const response = await axios.get("http://localhost:8000/test/getQuizzes/",{
-                withCredentials: true,
-                params: {
-                  course:course,
-                  subject:subject,
-                  chapter:chapter
-                },
-            });
-            if(response.data!='No current quiz'){
-                console.log(response.data)
-                alert('You have already added quiz for this')
-            }
+    // useEffect(() => {
+    //     // Define an async function to fetch data
+    //     const fetchQuizzes = async () => {
+    //       try {
+    //         const response = await axios.get("http://localhost:8000/test/getQuizzes/",{
+    //             withCredentials: true,
+    //             params: {
+    //               course:course,
+    //               subject:subject,
+    //               chapter:chapter
+    //             },
+    //         });
+    //         if(response.data!='No current quiz'){
+    //             console.log(response.data)
+    //             //alert('You have already added quiz for this')
+    //             navigate("/teacherHomePage",{ replace: true })
+                
+    //         }
 
                
-          } catch (err) {
-            console.error(err)
-          }
-        };
+    //       } catch (err) {
+    //         console.error(err)
+    //       }
+    //     };
     
-        fetchQuizzes(); // Call the async function
-      }, []);
+    //     fetchQuizzes(); // Call the async function
+    //   }, []);
 
  
 

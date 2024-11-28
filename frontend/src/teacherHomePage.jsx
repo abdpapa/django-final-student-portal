@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import  {useStor} from './data/storeuser';
 
-function  GetCourses() {
+function  TeacherHomePage() {
   const [courses, setCourses] = useState([]);
   const [subjects, setSubjects] = useState({});
   const [chapters, setChapters] = useState({});
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-   const{current_user,is_student}=useStor()
   // Fetch courses on component mount
   useEffect(() => {
+
     const fetchCourses = async () => {
       try {
         const response = await axios.get('http://localhost:8000/test/getCourses', {
           withCredentials: true,
         });
         setCourses(response.data);
-        console.log("current_user is"+current_user)
-        console.log(is_student)
+        
       } catch (err) {
         setError(err.response?.data?.message || 'An error occurred');
         console.error(err);
@@ -27,7 +25,7 @@ function  GetCourses() {
     };
 
     fetchCourses();
-  }, [current_user,is_student]);
+  }, []);
 
   // Fetch subjects for a course
   const fetchSubjects =async(course) => {
@@ -64,7 +62,7 @@ function  GetCourses() {
     } catch (err) {
       console.error(err);
     }
-    console.log('me is chapter')
+    
   };
 
   return (
@@ -133,4 +131,4 @@ function  GetCourses() {
   );
 }
 
-export default GetCourses;
+export default TeacherHomePage;

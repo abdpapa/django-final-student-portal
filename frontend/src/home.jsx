@@ -1,3 +1,5 @@
+//USELESS(CAN BE USED AS A START SCREEN)
+
 import React from 'react'
 
 const Home = () => {

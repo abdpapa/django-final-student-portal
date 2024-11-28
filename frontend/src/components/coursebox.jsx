@@ -3,6 +3,7 @@ import './coursebox.css'; // Add styles as needed
 
 function Coursebox( {course} ) {
     if (!course) {
+        
         return null; // Handle empty course gracefully
     }
 

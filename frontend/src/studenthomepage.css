@@ -59,6 +59,11 @@
     height: 40px;
     border-radius: 12px;
 }
-.feature-my-course-button:hover {
+
+.course-container{
+    display:flex
+}
+.featuremycoursebutton:hover {
     background-color:rgb(65, 0, 91);
+    cursor: pointer;
 }

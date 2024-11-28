@@ -19,15 +19,12 @@ def loginStudent(request):
             data = json.loads(request.body)
             
             username = data['username']
-            ##print(username)
+            
             if  username:
                
-                # return JsonResponse({'status': 'error', 'message': 'Username is required'}, status=200)
+                
                 password = data.get('password')
                 user = authenticate(username=username, password=password)
-                
-                    # print('not a student')
-                    # return JsonResponse({'status': 'error', 'message': 'Invalid credentials'}, status=400)
 
             
             if user:
@@ -51,7 +48,7 @@ def loginStudent(request):
                    return JsonResponse({'status': 'error', 'message': 'Invalid credentials'}, status=400)
                 
                  
-                #return JsonResponse({'status': 'success'}, status=200)
+               
             else:
                 return JsonResponse({'status': 'error', 'message': 'Invalid credentials'}, status=400)
         
@@ -90,7 +87,7 @@ def registerStudent(request):
                 password=make_password(password),  # Hash the password before saving
                 is_student=True,
             )
-            print(student)
+           
             
             user = User.objects.create_user(
                 username=username,
@@ -98,13 +95,13 @@ def registerStudent(request):
                 password=password,
                 is_student=True # Django's create_user automatically hashes the password
             )
-            print(user)
+            
             return JsonResponse({'status': 'success', 'message': 'User registered successfully'}, status=201)
         
         except json.JSONDecodeError:
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'}, status=400)
         except Exception as e:
-            print(str(e))
+            
             return JsonResponse({'status': 'error', 'message': f'An error occurred: {str(e)}'}, status=500)
     
     return JsonResponse({'status': 'error', 'message': 'Only POST requests are allowed'}, status=400)
@@ -113,43 +110,31 @@ def registerStudent(request):
 #Teacher registeration and login
 @csrf_exempt
 def loginTeacher(request):
-    #print(request.user.username)
+    
     if request.method == 'POST':
         if request.user.is_authenticated:
             print("User is already logged in.")
             logout(request)
         try:
             data = json.loads(request.body)
-           
             username = data['username']
-           
             if  username:
                
-                # return JsonResponse({'status': 'error', 'message': 'Username is required'}, status=200)
+                
                 password = data.get('password')
                 user = authenticate(username=username, password=password)
-                
-           
             
             if user:
                 if  user.is_student == False:
                  
                  login(request, user)
-                 
-
-                #  user_data = {
-                # 'username': user.username,
-                #  }
-                
                  return JsonResponse({'status': 'success','usernames' :user.username,
                         'is_student':user.is_student}, status=200)
             else:
                 print('not a teacher')
                 return JsonResponse({'status': 'error', 'message': 'Invalid credentials'}, status=400)
 
-            # else:
-            #     return JsonResponse({'status': 'error', 'message': 'Invalid credentials'}, status=400)
-        
+          
         except json.JSONDecodeError:
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'}, status=400)
     
@@ -189,28 +174,6 @@ def registerTeacher(request):
             )
             
             return JsonResponse({'status': 'success', 'message': 'Teacher registration request submitted successfully'}, status=201)
-            # Check if username already exists
-            # if Teacher.objects.filter(username=username).exists():
-                
-            #     return JsonResponse({'status': 'error', 'message': 'Username already exists'}, status=400)
-            
-            # # Create and save the student
-            # teacher = Teacher.objects.create(
-            #     username=username,
-            #     email=email,
-            #     password=make_password(password),  # Hash the password before saving
-            #     is_student=False,
-            # )
-            # print(teacher)
-            
-            # user = User.objects.create_user(
-            #     username=username,
-            #     email=email,
-            #     password=password,
-            #     is_student=False  # Django's create_user automatically hashes the password
-            # )
-            # print(user)
-            # return JsonResponse({'status': 'success', 'message': 'User registered successfully'}, status=201)
         
         except json.JSONDecodeError:
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'}, status=400)

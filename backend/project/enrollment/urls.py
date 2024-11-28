@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import getCourses, EnrollStudentCourse
+from .views import getCourses, EnrollStudentCourse,getEnrolledCourses
 
 urlpatterns = [
     path('getCourses/', getCourses, name='course-list'),
-    path('enrollcourse/', EnrollStudentCourse, name='enroll-course'),  
+    path('getEnrolledCourses/', getEnrolledCourses, name='get-enrolled-courses'), 
+    path('enrollcourse/', EnrollStudentCourse, name='enroll-course'),
 ]

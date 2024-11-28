@@ -1,0 +1,42 @@
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #F2f2f2;
+}
+
+
+.scourse-page {
+    margin: 2rem;
+    font-family: 'Lato', sans-serif;
+    background-color: #F2f2f2;
+}
+
+
+.scourse-title {
+    font-size: 3.5rem; 
+    font-weight: bold;
+    margin-bottom: 2.5rem;
+    text-align: center; 
+    color: #333;
+}
+
+
+@media (max-width: 1024px) {
+    .scourse-title {
+        font-size: 2.5rem; 
+    }
+}
+
+@media (max-width: 768px) {
+    .scourse-title {
+        font-size: 2rem; 
+    }
+}
+
+@media (max-width: 480px) {
+    .scourse-title {
+        font-size: 1.75rem; 
+    }
+}

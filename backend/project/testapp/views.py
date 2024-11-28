@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
-from .models import Subjects,Courses,Quiz
+from .models import Subjects,Courses
 # Create your views here.
 
 # views.py
@@ -15,34 +15,25 @@ from authentication.models import Teacher
 @csrf_exempt
 @api_view(['GET'])
 def get_courses(request):
-    # Query all courses
+    
     try:
      teacher = Teacher.objects.get(username=request.user.username)
      courses = teacher.courses
-     print(request.user)
-    # Convert the queryset to a list of dictionaries containing only the 'name' field
+     
      courses_list = list(courses)
-    # Return the list of courses as a JSON response using DRF's Response
+   
      return Response(courses_list)
     except Teacher.DoesNotExist:
          return Response("not a teacher")
 @csrf_exempt
 @api_view(['GET'])
 def get_subjects(request):
-    # Query all courses
     coursename = request.GET.get('course')
   
     course = Courses.objects.get(name=coursename)
    
     subjects=course.subjects
     sublist=list(subjects)
-    # print(subjectid)
-    # sublist=list
-    # for subs in subjectid:
-    #       sub = Subjects.objects.get(subs)
-    #       sublist.append(sub.name)
-    # # Return the list of courses as a JSON response using DRF's Response
-    # print(sublist)
     return Response(sublist)
 @csrf_exempt
 @api_view(['GET'])
@@ -55,13 +46,6 @@ def get_chapters(request):
     
     chapters=sub.chapters
     chaplist=list(chapters)
-    # print(subjectid)
-    # sublist=list
-    # for subs in subjectid:
-    #       sub = Subjects.objects.get(subs)
-    #       sublist.append(sub.name)
-    # # Return the list of courses as a JSON response using DRF's Response
-    # print(sublist)
     return Response(chaplist)
 
 @csrf_exempt
@@ -76,17 +60,18 @@ def Add_test(request):
 
     try:
         # Fetch the existing TestEntry
+        #SUB_ID AND CHAP_ID ARE ACTUALLY THERE NAMES
         test_entry = TestEntry.objects.get(coursename=course, sub_id=subject, chap_id=chapter)
 
-        # Ensure quizzes is a list
+        
         quizzes = test_entry.quizzes
         if not isinstance(quizzes, list):
             quizzes = []  # If not a list, reset it
 
         # Add the new quiz to the quizzes list
-        Quiz.objects.create(
-            quiz=quiz  # Wrap the quiz in a list
-        )
+        # Quiz.objects.create(
+        #     quiz=quiz  
+        # )
         quizzes.append(quiz)
         test_entry.quizzes = quizzes
         test_entry.save()
@@ -101,9 +86,9 @@ def Add_test(request):
             chap_id=chapter,
             quizzes=[quiz]  # Wrap the quiz in a list
         )
-        Quiz.objects.create(
-            quiz=quiz  # Wrap the quiz in a list
-        )
+        # Quiz.objects.create(
+        #     quiz=quiz  
+        # )
         return JsonResponse({'message': 'New TestEntry created with quiz'}, status=201)
 
     except Exception as e:
@@ -120,15 +105,6 @@ def get_quizzes(request):
     chapter= request.GET.get('chapter')
     try:
       test_entry = TestEntry.objects.get(coursename=course, sub_id=subject, chap_id=chapter)
-    
-    
-    # print(subjectid)
-    # sublist=list
-    # for subs in subjectid:
-    #       sub = Subjects.objects.get(subs)
-    #       sublist.append(sub.name)
-    # # Return the list of courses as a JSON response using DRF's Response
-    # print(sublist)
     
       return Response(test_entry.quizzes)
 

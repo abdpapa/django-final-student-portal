@@ -1,0 +1,73 @@
+
+.stopic-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Topic row */
+.stopic-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 1.4125rem;
+    width: 80%; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.stopic-name {
+    font-size: 1.125rem;
+    color: #333;
+}
+.main-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.take-test-button {
+    background-color: rgb(55, 13, 69);
+    color: #fff;
+    border: none;
+    border-radius: 1.4125rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.take-test-button:hover {
+    background-color: #5a53e8;
+}
+
+
+@media (max-width: 1024px) {
+    .stopic-row {
+        width: 90%; 
+    }
+}
+
+@media (max-width: 768px) {
+    .stopic-row {
+        flex-direction: column; 
+        width: 95%; 
+    }
+    .take-test-button {
+        width: 40%; 
+        padding: 0.8rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .stopic-row {
+        padding: 0.8rem;
+    }
+    .take-test-button {
+        font-size: 0.875rem; 
+    }
+}

@@ -1,3 +1,5 @@
+
+//REGISTER A TEACHER
 import React from 'react'
 import { useState } from 'react';
 //import axiosInstance from './axios';
@@ -9,6 +11,7 @@ const RegisterTeacher = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const[courses,setCourses]=useState([]);
+    const[error,setError]=useState("")
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -22,7 +25,7 @@ const RegisterTeacher = () => {
                 courses
               });
             if (response.data.status==="success"){
-                navigate('/login');
+                navigate('/login',{ replace: true });
             }
             else{
                 alert("some problem occured")
@@ -34,6 +37,7 @@ const RegisterTeacher = () => {
         }
         catch(err){
             console.log(err)
+            setError(err.message)
         }
        
     };
@@ -78,7 +82,7 @@ const RegisterTeacher = () => {
                     NET
                 </label>
             </div> 
-
+            
             <button type="submit">Register</button>
         </form>
     );

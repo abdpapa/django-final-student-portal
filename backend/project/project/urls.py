@@ -23,4 +23,5 @@ urlpatterns = [
    path('auth/', include('authentication.urls')),
    path('test/', include('testapp.urls')),
    path('enroll/', include('enrollment.urls')),
+   path('taketest/', include('taketest.urls')),
 ]
