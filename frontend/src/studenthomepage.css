@@ -1,16 +1,41 @@
 .studentbackground {
     width: 100%;
     min-height: 100vh;
-    background-color: rgb(193, 193, 193);
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
+    font-family: 'lato', Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5vh 5%;
+    background-color: rgb(55, 13, 69);
+    color: white;
+    font-size: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.navbar-item:hover {
+    color: rgb(150, 150, 255);
 }
 
 .featuredcoursearea, .yourcoursearea {
     margin: 10vh 15%;
     height: 44vh;
     border-radius: 5px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     gap: 2vh;
@@ -24,46 +49,138 @@
     justify-content: center;
 }
 
-.askforhelp {
-    font-weight: 400;
-    background-color: rgb(55, 13, 69);
-    color: white;
-    padding: 1vh;
-    border-radius: 10px;
-    margin: auto 15%;
-    width: fit-content;
+.course-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .coursebox {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     width: 150px;
     height: 150px;
-    padding: 10px;
     border: 2px solid rgb(55, 13, 69);
     border-radius: 8px;
     background-color: rgb(230, 230, 230);
     font-size: 20px;
     font-weight: bold;
-    overflow: hidden;
 }
 
 .feature-my-course-button {
-    background-color: purple;
+    /*background-color: purple;*/
+    background: linear-gradient(to right, #a96ceb, #ff70a8);
     color: white;
     border: none;
-    width: 60px;
-    height: 40px;
-    border-radius: 12px;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: 100px;
+    margin-top: 10px;
 }
 
-.course-container{
-    display:flex
-}
-.featuremycoursebutton:hover {
-    background-color:rgb(65, 0, 91);
+.feature-my-course-button:hover {
+    background: linear-gradient(to right, #8a47c9, #e35a8f);
     cursor: pointer;
+}
+
+.insights-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3vh 15%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.insight-box {
+    text-align: center;
+    font-size: 16px;
+}
+
+.circular-progress {
+    width: 70px;
+    height: 70px;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #f06595;
+}
+
+.details-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: linear-gradient(to right, #a96ceb, #ff70a8);
+    border: none;
+    color: white;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.details-button:hover {
+    background: linear-gradient(to right, #8a47c9, #e35a8f);
+}
+
+.slick-prev::before {
+    display: none;
+}
+
+.slick-next::before {
+    display: none;
+}
+
+.slick-prev {
+    width: 0;
+    height: 0;
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid transparent;
+    border-right: 40px solid rgb(155, 1, 155);
+    position: absolute;
+    left: -50px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.slick-next {
+    width: 0;
+    height: 0;
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid transparent;
+    border-left: 40px solid rgb(155, 1, 155);
+    position: absolute;
+    right: -50px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.slick-prev:hover, .slick-next:hover {
+    opacity: 0.8;
+}
+
+.slick-prev, .slick-next {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ask-for-help-button {
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0);
+    color: white;
+    height: 40px;
+    width: 100px;
+    font-family: 'lato', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 16px;
+}
+
+.ask-for-help-button:hover {
+    cursor: pointer;
+    background: linear-gradient(45deg, #f96c6c, #fc79a7, #ba21e1, #6332f5, #3155e6, #1392fa);
 }

@@ -1,22 +1,21 @@
-
 .coursebox{
     height: 15vh;
     width: 15vh;
     border-style: solid;
     border-radius: 5px;
-    border-width: 2px;
-    background-color: rgb(225, 225, 225);
-    border-color:rgb(55,13,69);
     border-width: 4px;
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0);
+    color: white; 
     display: flex;
     align-items: flex-end;
     justify-content: center;
     font-size: large;
+    position: relative;
     margin-right: 5%;
     margin-left: 5%;
 }
 
 .coursebox:hover{
-    background-color: rgb(55,13,69);
-    color: white;
+    background: white;
+    color:#f06595
 }
