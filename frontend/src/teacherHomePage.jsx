@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import './teacherHomepage.css'
+import Navbar from './Navbar'; //please make sure that this file is present and in updated format (shared as well)
 
 function  TeacherHomePage() {
   const [courses, setCourses] = useState([]);
@@ -8,7 +10,7 @@ function  TeacherHomePage() {
   const [chapters, setChapters] = useState({});
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  // Fetch courses on component mount
+
   useEffect(() => {
 
     const fetchCourses = async () => {
@@ -27,7 +29,6 @@ function  TeacherHomePage() {
     fetchCourses();
   }, []);
 
-  // Fetch subjects for a course
   const fetchSubjects =async(course) => {
     try {
       const response = await axios.get(`http://localhost:8000/test/getSubjects/`, {
@@ -38,7 +39,7 @@ function  TeacherHomePage() {
       });
       setSubjects((prevSubjects) => ({
         ...prevSubjects,
-        [course]: response.data, // Save subjects for this course
+        [course]: response.data,
       }));
     } catch (err) {
       console.error(err);
@@ -46,7 +47,6 @@ function  TeacherHomePage() {
     console.log('me is subject')
   };
 
-  // Fetch chapters for a subject
   const fetchChapters = async(course, subject) => {
     try {
       const response = await axios.get(`http://localhost:8000/test/getChapters/`, {
@@ -57,7 +57,7 @@ function  TeacherHomePage() {
       });
       setChapters((prevChapters) => ({
         ...prevChapters,
-        [`${course}-${subject}`]: response.data, // Save chapters for this subject
+        [`${course}-${subject}`]: response.data,
       }));
     } catch (err) {
       console.error(err);
@@ -67,66 +67,77 @@ function  TeacherHomePage() {
 
   return (
     <div>
-      <h1>My Courses</h1>
+      <Navbar />
+    <h1 className="title">My Courses</h1>
+    <div className="teacher-homepage">
+      
+      <div className="teacher-homepage-inner">
       {courses.length > 0 ? (
-        <ul>
+        <ul className="course-list">
           {courses.map((course, index) => (
-            <li key={index}>
-              <div>
-                {/* Course name */}
-                <span>{course}</span>
-                {/* Dropdown button for subjects */}
-                <button onClick={() => fetchSubjects(course)}>
+            <li key={index} className="course-item">
+              <div className="course-header">
+                <span className="course-name">{course}</span>
+                <button
+                  className="dropdown-button"
+                  onClick={() => fetchSubjects(course)}
+                >
                   View Subjects
                 </button>
-                {/* Render subjects if available */}
-                {subjects[course] && (
-                  <ul>
-                    {subjects[course].map((subject, subjIndex) => (
-                      <li key={subjIndex}>
-                        <div>
-                          {/* Subject name */}
-                          <span>{subject}</span>
-                          {/* Dropdown button for chapters */}
-                          <button
-                            onClick={() => fetchChapters(course, subject)}
-                          >
-                            View Chapters
-                          </button>
-                          {/* Render chapters if available */}
-                          {chapters[`${course}-${subject}`] && (
-                            <ul>
-                              {chapters[`${course}-${subject}`].map(
-                                (chapter, chapIndex) => (
-                                  <li key={chapIndex}>
-                                    {/* Chapter link */}
-                                    <Link
-                                      to={`/addTest?course=${course}&subject=${subject}&chapter=${chapter}`}
-                                      onClick={() =>
-                                        navigate(`/addTest?course=${course}&subject=${subject}&chapter=${chapter}`)
-                                      }
-                                    >
-                                      {chapter}
-                                    </Link>
-                                  </li>
-                                )
-                              )}
-                            </ul>
-                          )}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )}
               </div>
+              {subjects[course] && (
+                <ul className="subject-list">
+                  {subjects[course].map((subject, subjIndex) => (
+                    <li key={subjIndex} className="subject-item">
+                      <div className="subject-header">
+                        <span className="subject-name">{subject}</span>
+                        <button
+                          className="dropdown-button"
+                          onClick={() => fetchChapters(course, subject)}
+                        >
+                          View Chapters
+                        </button>
+                      </div>
+                      {chapters[`${course}-${subject}`] && (
+                        <ul className="chapter-list">
+                          {chapters[`${course}-${subject}`].map(
+                            (chapter, chapIndex) => (
+                              <li key={chapIndex} className="chapter-item">
+                                <Link
+                                  to={`/addTest?course=${course}&subject=${subject}&chapter=${chapter}`}
+                                  className="chapter-link"
+                                  onClick={() =>
+                                    navigate(
+                                      `/addTest?course=${course}&subject=${subject}&chapter=${chapter}`
+                                    )
+                                  }
+                                >
+                                  {chapter}
+                                </Link>
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
+  
       ) : error ? (
-        <p style={{ color: 'red' }}>{error}</p>
+        <p className="error-message">{error}</p>
       ) : (
-        <p>No courses found.</p>
+        <p className="no-courses">No courses found.</p>
       )}
+      </div>
+
+    </div>
+
+    <button className = "teacher-discussion-button">Discuss</button>
+
     </div>
   );
 }
