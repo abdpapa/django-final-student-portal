@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import Quiz from 'react-quiz-component';
 import axios from 'axios';
+import './rohaan.css'
 const AddTest = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -134,7 +135,7 @@ const AddTest = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Create a Quiz</h1>
-
+    <div className = "quiz-maker-container">
       <label>
         Quiz Title:
         <input
@@ -173,10 +174,11 @@ const AddTest = () => {
           onChange={handleChange}
         />
       </label>
+    </div>
 
-      <hr />
       <h2>Questions</h2>
       {quiz.questions.map((question, qIndex) => (
+        <div className='teacher-quiz-container-two'>
         <div key={qIndex} style={{ marginBottom: "20px" }}>
           <label>
             Question:
@@ -299,17 +301,18 @@ const AddTest = () => {
             </div>
           ))}
 
-          <button type="button" onClick={() => addAnswer(qIndex)}>
+          <button className = "teacher-quiz-button" type="button" onClick={() => addAnswer(qIndex)}>
             Add Answer
           </button>
         </div>
+      </div>
       ))}
 
-      <button type="button" onClick={addQuestion}>
+      <button className = "teacher-quiz-button" type="button" onClick={addQuestion}>
         Add Question
       </button>
 
-      <button type="submit">Submit Quiz</button>
+      <button className = "teacher-quiz-button"  type="submit">Submit Quiz</button>
       <Quiz quiz={quiz}/>
 
     </form>
