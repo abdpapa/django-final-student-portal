@@ -1,0 +1,473 @@
+/* Main container */
+.newHomeBackground {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Sidebar and content are side by side */
+    min-height: 100vh; /* Full viewport height */
+    background-color: rgb(241, 241, 241); /* Background color for the page */
+  }
+  
+  .mainContent {
+    display: flex; /* Stack elements vertically */
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    gap: 20px; /* Add spacing between items */
+    flex: 1; /* Take up remaining space */
+    padding: 20px; /* Add padding */
+    box-sizing: border-box;
+  }
+  
+  .forumBackground
+  {
+    display: flex; /* Use flexbox for layout */
+    min-height: 100vh; /* Full viewport height */
+    background-color: rgb(241, 241, 241); /* Background color for the page */
+    flex-direction: column; /* Stack children vertically */
+  }
+  
+  /* Left-side settings menu */
+  .settingsMenu {
+    width: 250px; /* Fixed width */
+    background-color: #6e00a8; /* Purple background */
+    color: white; /* White text */
+    padding: 20px; /* Add some padding inside */
+    box-sizing: border-box; /* Include padding in width/height */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 15px; /* Spacing between items */
+  }
+  
+  .settingsMenu ul {
+    list-style-type: none; /* Remove bullets from list */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .settingsMenu li {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px; /* Add padding around list items */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth hover effect */
+  }
+  
+  .settingsMenu li:hover {
+    background-color: #540180; /* Darker purple on hover */
+  }
+  
+  /* Main content area */
+  .settingsContent {
+    flex: 1; /* Take up remaining space */
+    padding: 20px; /* Add spacing */
+    box-sizing: border-box;
+  }
+  
+  .settingsContent p {
+    margin-left: 20px; /* Adjust the value for more or less indentation */
+  }
+  /* ending settings css */
+  
+  /* starting user forum css */
+  .courseBorderBanner {
+    width: calc(100% - 100px); 
+    height: 220px; /* Outer div is slightly taller */
+    margin-left: 10px; 
+    margin-top: 20px; 
+    padding: 0; /* Remove padding to avoid extra space */
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0);
+    border-radius: 16px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+  
+  .courseBanner {
+    width: calc(100% - 16px); /* Adjust width to account for the 8px border of the outer div */
+    height: calc(100% - 16px); /* Adjust height similarly */
+    background: rgb(241, 241, 241);; 
+    border-radius: 8px; /* Reduce border-radius to fit neatly inside the outer div */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* ending user forum css */
+  
+  /* starting general plus button settings css */
+  
+  .circularButton {
+    position: absolute; /* Position the button relative to the parent container */
+    top: 48%; /* Center vertically */
+    left: 58%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust the position to make the center align */
+    width: 60px; /* Width of the button */
+    height: 60px; /* Height of the button */
+    border-radius: 50%; /* Make it circular */
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0); /* Gradient background */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    font-size: 30px; /* Size of the plus sign */
+    color: white; /* Color of the plus sign */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+    border: none; /* Remove default border */
+    transition: background 0.3s ease, transform 0.2s ease; /* Smooth transitions for hover effect */
+    align-self: center;
+  }
+  
+  .circularButton:hover {
+    transform: translate(-50%, -50%) scale(1.1); /* Slightly increase size on hover */
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0, #f72585); /* Change gradient on hover */
+  }
+  
+  
+  
+  /* ending general plus button settings css */
+  
+  /* starting post banner css */
+  
+  .postBannerWrapper {
+    position: relative;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-left: 150px;
+    flex-direction: column;
+  }
+  
+  .postBanner {
+    height: fit-content;
+    min-height: 100px;
+    width: 700px;
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0);
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .postBanner:hover {
+    transform: scale(1.05);
+  }
+  
+  .postBannerContent {
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .separatorLine {
+    border-top: 1px solid #fff;
+    margin: 10px 0;
+  }
+  
+  .commentInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box;
+  }
+  
+  .expandedCommentsSection {
+    width: 700px;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+  
+  .commentsHeader {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .commentsList {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .comment {
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: left;
+  }
+  
+  .comment strong {
+    color: #007bff;
+  }
+  
+  
+  .postSectionBorderBanner {
+    width: calc(100% - 100px); 
+    height: fit-content; /* Outer div is slightly taller */
+    margin-left: 10px; 
+    margin-top: 20px; 
+    padding: 0; /* Remove padding to avoid extra space */
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0);
+    border-radius: 16px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+  
+  .postSectionBanner {
+    width: calc(100% - 16px); /* Adjust width to account for the 8px border of the outer div */
+    height: calc(100% - 16px); /* Adjust height similarly */
+    background: rgb(241, 241, 241);; 
+    border-radius: 8px; /* Reduce border-radius to fit neatly inside the outer div */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  
+  /* ending post banner css */
+  
+  /* starting Add Post Pop Up */
+  
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dimmed background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popupContent {
+    margin-left: 100px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px;
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color: white;
+  }
+  
+  .popupContent h2 {
+    margin-top: 0;
+  }
+  
+  textarea {
+    width: 90%;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  .addPostButton {
+    background: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .addPostButton:hover {
+    background: #1c7ed6;
+  }
+  
+  /* ending Add post pop up */
+
+  /* Insights page css */
+
+  .InsightsBackground {
+    display: flex;
+    flex-direction: column; /* Updated to column so KPI is below both Leaderboard and Performance */
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    height: 100vh;
+  }
+
+  .content-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 50px; /* Space between the top and content */
+  }
+
+  .leaderboard-container {
+    width: 40%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-right: 20px;
+    margin-left: 70px;
+  }
+  
+  .performance-container {
+    width: 30%; /* Adjust based on available space */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 305px;
+    margin-right: 70px;
+  }
+  
+  .performance-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .performance-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .performance-score {
+    font-size: 36px;
+    font-weight: bold;
+    color: #6c3ef5;
+  }
+  
+  .performance-score p {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .performance-rank {
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .leaderboard-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .leaderboard-key {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+    text-transform: lowercase;
+  }
+  
+  .leaderboard-key span {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .leaderboard-key .leaderboard-rank {
+    text-align: left;
+  }
+  
+  .leaderboard-key .leaderboard-points {
+    text-align: right;
+  }
+  
+  .leaderboard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .leaderboard-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-radius: 8px; /* Slightly larger radius for a smoother glow */
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #555;
+    position: relative;
+    z-index: 1; /* To ensure glow is behind content */
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .leaderboard-row.highlight {
+    background-color: #6c3ef5;
+    color: #fff;
+    box-shadow: 0 0 15px 5px rgba(108, 62, 245, 0.5), 
+                0 0 25px rgba(153, 0, 255, 0.3); /* Gradient glow effect */
+  }
+  
+  /* Optional: Gradient glow for all rows */
+  .leaderboard-row:not(.highlight) {
+    box-shadow: 0 0 10px 2px rgba(96, 2, 248, 0.3), 
+                0 0 15px rgba(155, 68, 255, 0.2); /* Subtle glow for others */
+  }
+  
+  
+  .leaderboard-row .leaderboard-rank,
+  .leaderboard-row .leaderboard-name,
+  .leaderboard-row .leaderboard-points {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .leaderboard-row .leaderboard-rank {
+    text-align: left;
+  }
+  
+  .leaderboard-row .leaderboard-points {
+    text-align: right;
+  }
+
+  .kpi-container {
+    width: 90%; 
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px; 
+    box-shadow: 0 0 15px 5px rgba(108, 62, 245, 0.5), 
+                0 0 25px rgba(153, 0, 255, 0.3); 
+    margin-top: 50px;
+    text-align: center;
+    margin-left: 10px; 
+  }
+  
+  .kpi-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+  }
+  
+
+  /*Ending Insights page css */

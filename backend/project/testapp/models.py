@@ -36,4 +36,6 @@ class TestEntry(models.Model):
     sub_id= models.CharField(null=True,max_length=150)
     chap_id = models.CharField(max_length=150)
     quizzes=models.JSONField(default=list,blank=True)
-   
+
+    def getQuizCount(self):
+        return len(self.quizzes)

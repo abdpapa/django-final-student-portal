@@ -110,3 +110,32 @@ def get_quizzes(request):
 
     except TestEntry.DoesNotExist:
         return Response('No current quiz')
+    
+@csrf_exempt
+@api_view(['GET'])
+def getTotalQuizCount(request, courseName):
+    """
+    View to get the total quiz count for all TestEntry objects related to a given courseName.
+    """
+    print("qqema")
+    if not courseName:
+        # Return a bad request error if no courseName is provided
+        return JsonResponse({'error': 'courseName is required'}, status=400)
+
+    try:
+        # Filter TestEntry objects by courseName
+        test_entries = TestEntry.objects.filter(coursename=courseName)
+
+        if not test_entries:
+            # If no entries are found for the given courseName, return a not found error
+            return JsonResponse({'error': 'No entries found for the given courseName'}, status=404)
+        
+        # Calculate the total quiz count by summing the quiz counts for all entries
+        total_quiz_count = sum(len(entry.quizzes) for entry in test_entries)
+
+        # Return the total quiz count as a JSON response
+        return JsonResponse({'total_quiz_count': total_quiz_count})
+
+    except Exception as e:
+        # Catch any unexpected errors and return an internal server error
+        return JsonResponse({'error': str(e)}, status=500)

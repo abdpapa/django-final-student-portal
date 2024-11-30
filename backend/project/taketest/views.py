@@ -169,9 +169,17 @@ def AddTestScores(request):
         print(e)
         return JsonResponse({"error": "Some error occurred"})
 
-
-
-
-
-
-# Create your views here.
+@csrf_exempt
+@api_view(['GET'])
+def getStudentQuizCount(request, studentName):
+    """
+    View to get the total count of TestScores related to a given studentName.
+    """
+    # Retrieve all TestScores related to the studentName
+    test_scores = TestScores.objects.filter(studentname=studentName)
+    
+    # Count the number of TestScores entries for that student
+    quiz_count = test_scores.count()
+    
+    # Return the count as a JSON response
+    return JsonResponse({'student': studentName, 'quiz_count': quiz_count})

@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'testapp',
     'corsheaders',
     'enrollment',
-    'taketest'
+    'taketest',
+    'UserPosts',
 ]
 # settings.py
 AUTH_USER_MODEL = 'authentication.User'

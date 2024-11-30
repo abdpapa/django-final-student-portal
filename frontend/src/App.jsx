@@ -12,7 +12,8 @@ import AddTest from './AddTest';
 import ProtectedRoute from './components/protectedRutes';
 import Studenthomepage from './StudentHomepage';
 import TeacherHomePage from './teacherHomePage';
-
+import Forum from './Forum';
+import Insights from './Insights';
 
 //ADD START SCREEN
 function App() {
@@ -81,6 +82,24 @@ function App() {
             <Studenthomepage/>
           </ProtectedRoute>
         }
+      />
+
+      <Route
+      path="/forum"
+      element={
+        <ProtectedRoute  allowedRoles={['forum']}>
+          <Forum courseName={'SAT'}/>
+        </ProtectedRoute>
+      }
+      />
+
+      <Route
+      path="/insights"
+      element={
+        <ProtectedRoute  allowedRoles={['insights']}>
+          <Insights/>
+        </ProtectedRoute>
+      }
       />
 
      <Route
