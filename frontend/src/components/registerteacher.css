@@ -1,0 +1,86 @@
+.register-teacher-page{
+    display: flex;
+    min-height: 100vh;
+}
+.register-text-area{
+    background-color: rgb(55,13,69);
+    width: 40%;
+    font-size: 50px;
+    text-align: left;
+    padding-left: 7vh;
+    color: white;
+    font-weight: 300;
+}
+.register-teacher-form-area{
+    background-color: rgb(230,230,230);
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.register-teacher-form{
+    background-color: white;
+    height: 63%;
+    width:70%;
+    border-radius: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5vh;
+}
+.register-teacher-form p{
+    margin: 0;
+    font-weight: 700;
+    margin-bottom: 1vh;
+    font-size: large;
+}
+.register-teacher-form input{
+    width: 70%;
+    height: 10%;
+    border-style: solid;
+    border-color: rgb(230,230,230);
+    background-color: rgb(230,230,230);
+    border-radius: 1vh;
+    margin-bottom: 2vh;
+    font-size:medium;
+    color: rgb(112, 28, 140);
+}
+
+.register-teacher-form button{
+    height: 12%;
+    width: 15%;
+    font-size: larger;
+    border-style: solid;
+    border-width: 0.5vh;
+    border-radius: 5vh;
+    font-weight: 550;
+    background-color: black;
+    color: white;
+    margin-bottom: 5vh;
+    
+}
+.register-teacher-form button:hover{
+    background-color: white;
+    color: black;
+}
+.checkbox-area{
+    margin-bottom: 2vh;
+}
+.checkbox-area h4{
+    margin-bottom: 1vh; 
+}
+.single-checkbox{
+    display: flex;
+    margin-left: 2vh;
+}
+.single-checkbox input{
+    padding-right: 0;
+    margin-right: 0;
+    width: 3vh;
+}
+
+.single-checkbox p{
+    color: rgb(112, 28, 140);
+}
