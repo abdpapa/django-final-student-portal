@@ -1,3 +1,7 @@
+AddTest.jsx
+
+
+
 //THE PAGE WHERE TEACHER ADDS TEST
 
 
@@ -6,6 +10,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Quiz from 'react-quiz-component';
 import axios from 'axios';
 import './rohaan.css'
+import Navbar from './Navbar';
 const AddTest = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -14,33 +19,7 @@ const AddTest = () => {
     const chapter = queryParams.get('chapter');
     const navigate=useNavigate()
     
-    // useEffect(() => {
-    //     // Define an async function to fetch data
-    //     const fetchQuizzes = async () => {
-    //       try {
-    //         const response = await axios.get("http://localhost:8000/test/getQuizzes/",{
-    //             withCredentials: true,
-    //             params: {
-    //               course:course,
-    //               subject:subject,
-    //               chapter:chapter
-    //             },
-    //         });
-    //         if(response.data!='No current quiz'){
-    //             console.log(response.data)
-    //             //alert('You have already added quiz for this')
-    //             navigate("/teacherHomePage",{ replace: true })
-                
-    //         }
-
-               
-    //       } catch (err) {
-    //         console.error(err)
-    //       }
-    //     };
     
-    //     fetchQuizzes(); // Call the async function
-    //   }, []);
 
  
 
@@ -118,7 +97,7 @@ const AddTest = () => {
     e.preventDefault();
     console.log(course)
     try {
-        const response = await axios.post(`http://localhost:8000/test/AddTest/`, {
+        const response = await axios.post(http://localhost:8000/test/AddTest/, {
             quiz,
             course,
             subject,
@@ -133,6 +112,8 @@ const AddTest = () => {
   };
 
   return (
+    <>
+        <Navbar/>
     <form onSubmit={handleSubmit}>
       <h1>Create a Quiz</h1>
     <div className = "quiz-maker-container">
@@ -313,9 +294,10 @@ const AddTest = () => {
       </button>
 
       <button className = "teacher-quiz-button"  type="submit">Submit Quiz</button>
-      <Quiz quiz={quiz}/>
+      
 
     </form>
+    </>
   );
 
 }
