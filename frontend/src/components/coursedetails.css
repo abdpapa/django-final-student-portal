@@ -1,42 +1,89 @@
 
-
-html, body {
-    height: 100%;
-    margin: 0;
-    background-color: #F2f2f2;
+.stopic-row {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-
-.scourse-page {
-    margin: 2rem;
-    font-family: 'Lato', sans-serif;
-    background-color: #F2f2f2;
+.topic-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-
-.scourse-title {
-    font-size: 3.5rem; 
+.stopic-name {
+    font-size: 18px;
     font-weight: bold;
-    margin-bottom: 2.5rem;
-    text-align: center; 
     color: #333;
 }
 
-
-@media (max-width: 1024px) {
-    .scourse-title {
-        font-size: 2.5rem; 
-    }
+.take-test-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-left: 700px;
 }
 
-@media (max-width: 768px) {
-    .scourse-title {
-        font-size: 2rem; 
-    }
+.take-test-button:hover {
+    background-color: #45a049;
 }
 
-@media (max-width: 480px) {
-    .scourse-title {
-        font-size: 1.75rem; 
-    }
+.chapter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.chapter-name {
+    margin-left: 0;
+    font-size: 18px;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #000000;
+    flex-grow: 1;
+    margin-right: 800px;
+}
+
+.dropdown-item {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+    background-color: purple;
+    width: 80px;
+    height: 30px;
+    justify-content: center;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.dropdown-item:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: rgb(189, 5, 189);
+}
+
+.dropdown-below {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
