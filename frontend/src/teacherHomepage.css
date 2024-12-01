@@ -1,0 +1,104 @@
+.teacher-homepage {
+    padding: 20px;
+    background: linear-gradient(45deg, #c41aef, #c41aef, #cc5de8, #845ef7, #5c7cfa, #5c7cfa);
+    color: #333;
+    margin: 10px;
+    border-radius: 5px;
+    font-family: 'lato', Arial, Helvetica, sans-serif;
+  }
+
+.teacher-homepage-inner {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+  
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #000000;
+}
+  
+.course-list,
+.subject-list,
+.chapter-list {
+    list-style: none;
+    padding: 0;
+}
+
+.course-item,
+.subject-item,
+.chapter-item {
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.course-header,
+.subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.course-name,
+.subject-name {
+    font-weight: bold;
+}
+
+.chapter-link {
+    text-decoration: none;
+    background-color: #000000;
+    color: white;
+    transition: color 0.3s;
+    border-radius: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.teacher-discussion-button {
+    background: linear-gradient(45deg, #ff00d4, #a033ff, #4a90e2);
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.teacher-discussion-button:hover {
+    background: linear-gradient(45deg, #cd01ab, #8700fd, #0e7dfc);
+    cursor: pointer;
+}
+
+.chapter-link:hover {
+    color: #ffffff;
+    background-color: #333;
+}
+
+.dropdown-button {
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.dropdown-button:hover {
+    background: linear-gradient(45deg, #fe4141, #f06595, #da44ff, #7446ff, #4b6ffe, #219bff);
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+}
+
+.no-courses {
+    text-align: center;
+    font-style: italic;
+}
