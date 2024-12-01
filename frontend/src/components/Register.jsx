@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './register.css'
 function RegisterComponent() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -36,13 +37,29 @@ function RegisterComponent() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-            <button type="submit">Register</button>
-            {error && <p>{error}</p>}
-        </form>
+        <div className='register-page'>
+            <div className='register-form-area'>
+                <form onSubmit={handleSubmit} className='register-form'>
+                    <p>Username</p>
+                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+                    <p>Email</p>
+                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                    <p>Password</p>
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                    <button type="submit">Register</button>
+                    {error && <p>{error}</p>}
+                </form>
+            </div>
+            <div className='register-text-area'>
+                <p>
+                Your journey
+                <br />
+                Towards learning
+                <br />
+                Starts here!
+                </p>  
+            </div>
+        </div>
     );
 }
 
